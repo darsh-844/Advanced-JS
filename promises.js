@@ -19,24 +19,34 @@ const promise1 = new Promise((resolve, reject) => {
 //     console.log(error);
 // });
 
-const promise2 = new Promise((resolve, reject) => {
-    let success = true;
-    if (success) {  
-        resolve({
-            id: 29032031,
-            name: "Jane Doe",
-        });
-    }
-    else {
-        reject({
-            error: "Something went wrong",
-        });
-    }
-});
+// const promise2 = new Promise((resolve, reject) => {
+//     let success = true;
+//     if (success) {  
+//         resolve({
+//             id: 29032031,
+//             name: "Jane Doe",
+//         });
+//     }
+//     else {
+//         reject({
+//             error: "Something went wrong",
+//         });
+//     }
+// });
 
 
-Promise.all([promise1, promise2]).then((responses) => {
-    console.log(responses);
-}).catch((error) => {
+// Promise.any([promise1, promise2]).then((responses) => {
+//     console.log(responses);
+// }).catch((error) => {
+//     console.log(error);
+// });
+
+promise1.then((response) => {
+    return response
+})
+.then((response2) => {
+    console.log(response2.username);
+})
+.catch((error) => {
     console.log(error);
-});
+})
