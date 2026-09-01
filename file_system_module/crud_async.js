@@ -24,10 +24,3 @@ fs.appendFile("notes.txt", `\n${updateData}`, (err) => {
     console.log("file updated successfully.");
 });
 
-// fs.rm("notes.txt", (err) => {
-//     if (err) {
-//         console.error(err);
-//         return;
-//     }   
-//     console.log("File deleted successfully.");
-// });
