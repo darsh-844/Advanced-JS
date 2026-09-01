@@ -1,7 +1,7 @@
 const fs = require('fs');
 fs.mkdir("./myfolder1/myfolder2/myfolder3", { recursive: true }, (err) => {
     if (err) {
-        console.error(err);
+        console.log(err);
         return;
     }
     console.log("Folder created successfully.");
