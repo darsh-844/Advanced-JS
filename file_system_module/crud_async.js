@@ -15,7 +15,7 @@ fs.readFile("notes.txt", "utf8", (err, data) => {
     console.log("Read data from notes.txt:", `${data}`);
 });     
 
-const updateData = "hello , ece 3rd sem";
+const updateData = "Hello , Aarushi";
 fs.appendFile("notes.txt", `\n${updateData}`, (err) => {
     if (err) {
         console.error(err);
