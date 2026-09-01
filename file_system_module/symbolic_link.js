@@ -7,4 +7,4 @@ fs.symlink("notes.txt", "link.txt", "dir", (err) => {
     }
     console.log("Symbolic link created successfully.");
     }
-);
+)
