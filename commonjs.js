@@ -5,3 +5,4 @@
 
 import isVote from './esm.js'
 console.log(isVote(19));
+console.log("Hi");
