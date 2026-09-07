@@ -1,3 +1,5 @@
+//USES PLATFORM OS
+
 const fs=require('fs');
 
 // fs.watch('index.txt',(eventType,filename)=>{
