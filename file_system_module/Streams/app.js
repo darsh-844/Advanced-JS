@@ -31,3 +31,18 @@ writableStream.on("error", (err) => {
 });
 
 readableStream.pipe(writableStream);
+
+// Duplex Streams
+
+const duplexStream = fs.createReadStream("input.txt", "utf-8");
+duplexStream.on("data", (chunk) => {
+  console.log("Duplex stream data chunk: ", chunk);
+});
+
+duplexStream.on("end", () => {
+  console.log("Finished reading from duplex stream.");
+});
+
+duplexStream.on("error", (err) => {
+  console.error("Error in duplex stream: ", err);
+});
