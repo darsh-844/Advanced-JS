@@ -7,8 +7,8 @@ for (let i = 0; i < 5; i++) {
 }
 
 setTimeout(() => {
-  console.log("Timeout completed after 2 seconds");
-}, 2000);
+  console.log("Timeout completed after 9 seconds");
+}, 9000);
 
 console.log("End");
 
@@ -19,3 +19,14 @@ setTimeout(() => {
 }, 3000);
 
 console.log("Continuing with other tasks...");
+
+console.log("Synchronous operation completed immediately");
+
+Promise.resolve().then((message) => {
+  console.log("Micro Task");
+});
+
+setTimeout(() => {
+  console.log("Macro Task");
+}, 2000);
+
