@@ -1,6 +1,7 @@
-// import http from 'http';
+import http from 'http';
 
-const http = require('http');
+// const http = require('http');
+import fs from 'fs';
 
 const server = http.createServer((req, res) => {
     console.log("Yoooooooö");
@@ -20,6 +21,17 @@ const server = http.createServer((req, res) => {
         'Custom-Header': 'Darsh',
         'accept-charset': 'utf-8',
     });
+
+    fs.readFile('index.html','utf8', (err, data) => {
+        if (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Internal Server Error');
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        })
+
     res.end(JSON.stringify(order));
 });
 
