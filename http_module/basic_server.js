@@ -12,8 +12,14 @@ const server = http.createServer((req, res) => {
         username: "Darsh",
     }
 
-    res.statusCode = 201;
-    res.setHeader("Content-Type" , "application/json");
+    // res.statusCode = 201;
+    // res.setHeader("Content-Type" , "application/json");
+
+    res.writeHead(200, {
+        'Content-Type': 'application/json', 
+        'Custom-Header': 'Darsh',
+        'accept-charset': 'utf-8',
+    });
     res.end(JSON.stringify(order));
 });
 
