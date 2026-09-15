@@ -8,9 +8,9 @@ const lol = fs.readFileSync('./service.html', 'utf8');
 const server = http.createServer((req, res) => {
     console.log("Yoooooooö");
     console.log(req.url);
-    if (req.url === '/'){
-    res.end(home);
-    } else if (req.url === '/about'){
+    if (req.url === '/') {
+        res.end(home.replace("{{%CONTENTS%}}", "Home Page"));
+    } else if (req.url === '/about') {
         res.end(hero);
     } else if (req.url === '/contact') {
         res.end(data);
