@@ -15,9 +15,12 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+const data = fs.readFileSync('./index.html', 'utf8');
+
 const server = http.createServer((req, res) => {
 
     console.log("Yoooooooö");
+    console.log(`${data}`);
 
     // const order = {
     //     orderId: 9942,
@@ -40,7 +43,7 @@ const server = http.createServer((req, res) => {
 
         const filePath = path.join(__dirname, 'index.html');
 
-        fs.readFile(filePath, 'utf8', (err, data) => {
+        fs.readFile('./index.html', 'utf8', (err, data) => {
 
             if (err) {
                 console.log(err);
