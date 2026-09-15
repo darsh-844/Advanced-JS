@@ -1,18 +1,21 @@
 import http from 'http';
 import fs from 'fs';
+const home = fs.readFileSync('./index.html', 'utf8');
+const data = fs.readFileSync('./contact.html', 'utf8');
+const hero = fs.readFileSync('./about.html', 'utf8');
+const lol = fs.readFileSync('./service.html', 'utf8');
 
 const server = http.createServer((req, res) => {
     console.log("Yoooooooö");
     console.log(req.url);
     if (req.url === '/'){
-    res.end("Hello from Home page!");
+    res.end(home);
     } else if (req.url === '/about'){
-        res.end("This is the about page");
+        res.end(hero);
     } else if (req.url === '/contact') {
-        const data = fs.readFileSync('./contact.html', 'utf8');
         res.end(data);
     } else if (req.url === '/services') {
-        res.end("This is the services page");
+        res.end(lol);
     }
     else {
         res.end("404 - Page Not Found");
