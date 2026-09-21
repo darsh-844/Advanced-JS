@@ -1,5 +1,6 @@
 import http from 'http';
 import fs from 'fs';
+
 const home = fs.readFileSync('./index.html', 'utf8');
 const data = fs.readFileSync('./contact.html', 'utf8');
 const hero = fs.readFileSync('./about.html', 'utf8');
@@ -14,7 +15,7 @@ const server = http.createServer((req, res) => {
         res.end(hero);
     } else if (req.url === '/contact') {
         res.end(data);
-    } else if (req.url === '/services') {
+    } else if (req.url === '/service') {
         res.end(lol);
     }
     else {
