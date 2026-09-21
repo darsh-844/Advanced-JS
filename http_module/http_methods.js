@@ -12,7 +12,7 @@ const server = http.createServer((req,res) => {
     }
     else if (req.url === '/config'){
         res.writeHead( 200 , {'Content-Type' : 'application/json'});
-        res.end(JSON.parse(dom));
+        res.end(JSON.stringify(dom));
     }
     else{
     res.statusCode = 404;
@@ -23,3 +23,6 @@ const server = http.createServer((req,res) => {
 server.listen( 5500 , "127.0.0.1", () => {
     console.log(" Server is live on 127.0.0.1:5500.  ");
 });
+
+// Parse -> JSON to JS
+// Stringify -> JS to JSON
