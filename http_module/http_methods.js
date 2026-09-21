@@ -1,9 +1,9 @@
 import http from 'http';
 import fs from 'fs';
-import { json } from 'stream/consumers';
 
 const dom = fs.readFileSync('./config.json' , 'utf-8');
 const home = fs.readFileSync('./index.html' , 'utf-8');
+const err = fs.readFileSync('./err.html' , 'utf-8');
 
 const server = http.createServer((req,res) => {
     console.log('Success!!!!');
@@ -15,7 +15,8 @@ const server = http.createServer((req,res) => {
         res.end(JSON.stringify(dom));
     }
     else{
-    res.end('Yoooooooo');
+    res.statusCode = 404;
+    res.end(err);
     }
 });
 
