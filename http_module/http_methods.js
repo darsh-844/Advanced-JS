@@ -1,5 +1,6 @@
 import http from 'http';
 import fs from 'fs';
+import { json } from 'stream/consumers';
 
 const dom = fs.readFileSync('./config.json' , 'utf-8');
 const home = fs.readFileSync('./index.html' , 'utf-8');
