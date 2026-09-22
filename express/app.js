@@ -1,11 +1,11 @@
 import express from 'express';
+import fs from 'fs';
 
-const app = express()
-
-console.log(app);
+const app = express();
+const home = fs.readFileSync('./index.html', 'utf-8');
 
 app.get('/', (req, res) => {
-   res.send('Hello World!')
+   res.send(home);
 })
 
 app.get('/home', (req,res) => {
