@@ -19,13 +19,27 @@
 // });
 
 import express from 'express';
+import fs from 'fs';
 
 const app = express();
+const bookData = fs.readFileSync('./data/books.json','utf-8');
 
-app.get("/",(req,res)=>{
-    res.send("Home Page");
+app.get("/api/v1/books",(req,res)=>{
+    try {
+         res.status(200).json({
+        status: "Success",
+        data : { 
+            book : bookData
+        }
+    });
+    } catch (error) {
+        res.status(404).json({
+            code:404,
+            message: "Error 404"
+        });
+    }
 });
 
-app.listen(3000,()=>{
+app.listen(5500,'127.0.0.1',()=>{
     console.log('server is running!!!!');
 });
