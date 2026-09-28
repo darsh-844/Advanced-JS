@@ -22,15 +22,20 @@ import express from 'express';
 import fs from 'fs';
 
 const app = express();
-const bookData = fs.readFileSync('./data/books.json','utf-8');
+const bookData = fs.readFileSync('./data/books.json');
+
+JSON.parse(bookData);
+console.log(bookData.length);
 
 app.get("/api/v1/books",(req,res)=>{
     try {
          res.status(200).json({
         status: "Success",
-        data : { 
+        code: 200,
+        data: { 
             book : bookData
-        }
+        },
+        count: bookData.length
     });
     } catch (error) {
         res.status(404).json({
