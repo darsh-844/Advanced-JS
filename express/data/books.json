@@ -144,7 +144,8 @@
     ],
     "available": false,
     "price": 19.99
-  },
+  }
+  ,
   {
     "id": "12",
     "title": "Dune",
@@ -157,7 +158,8 @@
     ],
     "available": true,
     "price": 16.99
-  },
+  }
+  ,
   {
     "id": "13",
     "title": "Neuromancer",
@@ -169,7 +171,8 @@
     ],
     "available": true,
     "price": 12.5
-  },
+  }
+  ,
   {
     "id": "14",
     "title": "The Left Hand of Darkness",
@@ -181,7 +184,8 @@
     ],
     "available": false,
     "price": 14
-  },
+  }
+  ,
   {
     "id": "15",
     "title": "Atomic Habits",
@@ -194,7 +198,8 @@
     ],
     "available": true,
     "price": 16
-  },
+  }
+  ,
   {
     "id": "16",
     "title": "The 7 Habits of Highly Effective People",
@@ -219,7 +224,8 @@
     ],
     "available": true,
     "price": 21.55
-  },
+  }
+  ,
   {
     "id": "18",
     "title": "Man's Search for Meaning",
@@ -232,7 +238,8 @@
     ],
     "available": true,
     "price": 11.99
-  },
+  }
+  ,
   {
     "id": "19",
     "title": "The Alchemist",
@@ -245,7 +252,8 @@
     ],
     "available": true,
     "price": 12.5
-  },
+  }
+  ,
   {
     "id": "20",
     "title": "The Three-Body Problem",
@@ -257,7 +265,8 @@
     ],
     "available": true,
     "price": 14.99
-  },
+  }
+  ,
   {
     "id": "21",
     "title": "Sapiens: A Brief History of Humankind",
@@ -270,7 +279,8 @@
     ],
     "available": true,
     "price": 16.5
-  },
+  }
+  ,
   {
     "id": "22",
     "title": "Foundation",
@@ -283,7 +293,8 @@
     ],
     "available": true,
     "price": 14.99
-  },
+  }
+  ,
   {
     "id": "23",
     "title": "The White Tiger",
@@ -296,7 +307,8 @@
     ],
     "available": true,
     "price": 14.75
-  },
+  }
+  ,
   {
     "id": "24",
     "title": "The God of Small Things",
