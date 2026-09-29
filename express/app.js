@@ -93,8 +93,29 @@ app.post("/api/v1/books" , (req,res) => {
             message : "Book data not added"
         })
     }
+});
 
-})
+app.patch("/api/v1/books/:id" , (req,res) => {
+    let c = req.params.id;
+    const bookToUpdate = bookData.find(book=>book.id === c);
+    let index = bookData.indexOf(bookToUpdate);
+    const updateBook = Object.assign(bookToUpdate,req.body);
+    bookData[index] = updateBook;
+    try {
+        res.status(200).json({
+        status : "Success",
+        data : {
+            book : updatedBook,
+            message : "Book updated Succesfully"
+        }
+    })
+    } catch (error) {
+        res.status(400).json({
+            status : "Fail",
+            message : "Book not updated"
+        })    
+    }
+});
 
 app.listen(5500,'127.0.0.1',()=>{
     console.log('server is running!!!!');
