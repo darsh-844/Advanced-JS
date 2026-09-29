@@ -78,6 +78,10 @@ app.get("/api/v1/books/:id" , (req,res) => {
     }
 });
 
+app.post("/api/v1/books" , (req,res) => {
+    res.send(req.body)
+})
+
 app.listen(5500,'127.0.0.1',()=>{
     console.log('server is running!!!!');
 });
