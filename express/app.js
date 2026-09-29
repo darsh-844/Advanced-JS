@@ -99,13 +99,16 @@ app.patch("/api/v1/books/:id" , (req,res) => {
     let c = req.params.id;
     const bookToUpdate = bookData.find(book=>book.id === c);
     let index = bookData.indexOf(bookToUpdate);
+    console.log(bookToUpdate);
+    console.log(req.body);
     const updateBook = Object.assign(bookToUpdate,req.body);
     bookData[index] = updateBook;
+    fs.writeFileSync("./data/books.json" , JSON.stringify(bookData));
     try {
         res.status(200).json({
         status : "Success",
         data : {
-            book : updatedBook,
+            book : updateBook,
             message : "Book updated Succesfully"
         }
     })
