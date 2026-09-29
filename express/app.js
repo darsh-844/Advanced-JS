@@ -22,8 +22,18 @@ import express from 'express';
 import fs from 'fs';
 
 const app = express();
-app.use(express.json());
 const bookData = JSON.parse(fs.readFileSync('./data/books.json'));
+
+app.use(express.json());
+app.use((req,res,next) => {
+    console.log("Middleware");
+    next();
+});
+
+function validateEmail (req,res,next){
+    console.log("Email Validated");
+    next();
+};
 
 app.get("/api/v1/books",(req,res)=>{
     try {
@@ -96,28 +106,43 @@ app.post("/api/v1/books" , (req,res) => {
 });
 
 app.patch("/api/v1/books/:id" , (req,res) => {
-    let c = req.params.id;
-    const bookToUpdate = bookData.find(book=>book.id === c);
-    let index = bookData.indexOf(bookToUpdate);
-    console.log(bookToUpdate);
-    console.log(req.body);
-    const updateBook = Object.assign(bookToUpdate,req.body);
-    bookData[index] = updateBook;
-    fs.writeFileSync("./data/books.json" , JSON.stringify(bookData));
     try {
-        res.status(200).json({
-        status : "Success",
-        data : {
-            book : updateBook,
-            message : "Book updated Succesfully"
+        let c = req.params.id;
+        const bookToUpdate = bookData.find(book=>book.id === c);
+        if (!bookToUpdate) {
+            return res.status(404).json({
+                status : "Fail",
+                message : "Book not Found!!"
+            });
         }
-    })
+        let index = bookData.indexOf(bookToUpdate);
+        const updateBook = Object.assign(bookToUpdate, req.body);
+        bookData[index] = updateBook;
+        fs.writeFileSync("./data/books.json" , JSON.stringify(bookData));
+        res.status(200).json({
+            status : "Success",
+            data : {
+                book : updateBook,
+                message : "Book updated Succesfully"
+            }
+        });
     } catch (error) {
-        res.status(400).json({
+        res.status(500).json({
             status : "Fail",
             message : "Book not updated"
-        })    
+        });
     }
+});
+
+app.delete("/api/v1/books/:id" , (req,res) => {
+    const deleteBook = bookData.find(book=>book.id===req.params.id);
+    const books = bookData.filter(book => book.id!=req.params.id);
+    res.status(200).json({
+        status : "Success",
+        data : {
+            books : books
+        }
+    })
 });
 
 app.listen(5500,'127.0.0.1',()=>{
