@@ -22,6 +22,7 @@ import express from 'express';
 import fs from 'fs';
 
 const app = express();
+app.use(express.json());
 const bookData = JSON.parse(fs.readFileSync('./data/books.json'));
 
 app.get("/api/v1/books",(req,res)=>{
@@ -79,7 +80,20 @@ app.get("/api/v1/books/:id" , (req,res) => {
 });
 
 app.post("/api/v1/books" , (req,res) => {
-    res.send(req.body)
+    bookData.push(req.body);
+    fs.writeFileSync("./data/books.json" , JSON.stringify(bookData));
+    try {
+        res.status(201).json({
+        status : "Success",
+        message : "Book data succesfully added"
+    })
+    } catch (error) {
+        res.status(400).json({
+            status : "Fail",
+            message : "Book data not added"
+        })
+    }
+
 })
 
 app.listen(5500,'127.0.0.1',()=>{
